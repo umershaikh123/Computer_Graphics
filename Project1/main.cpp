@@ -13,6 +13,7 @@ void drawRectangle(float x, float y, float width, float height, float r, float g
     glBegin(GL_QUADS);
     glVertex2f(x, 900 - y);                // Convert Y-axis to OpenGL coordinate system
     glVertex2f(x + width, 900 - y);        // Convert Y-axis to OpenGL coordinate system
+    glColor3f(0.0f, 0.0f, 0.0f);
     glVertex2f(x + width, 900 - (y + height)); // Convert Y-axis to OpenGL coordinate system
     glVertex2f(x, 900 - (y + height));     // Convert Y-axis to OpenGL coordinate system
     glEnd();
@@ -35,12 +36,14 @@ void drawEllipse(float x, float y, float width, float height, float r, float g, 
     const float M_PI = 3.14159265358979323846;
     glBegin(GL_TRIANGLE_FAN);
     glVertex2f(x + width / 2.0f, 900 - (y + height / 2.0f)); // Center of the ellipse
+    glColor3f(0.0f, 0.0f, 0.0f);
     for (int i = 0; i <= numSegments; i++) {
         float angle = i * 2.0f * M_PI / numSegments;
         float px = x + width / 2.0f + width / 2.0f * cos(angle);
         float py = y + height / 2.0f + height / 2.0f * sin(angle);
         glVertex2f(px, 900 - py); // Convert Y-axis to OpenGL coordinate system
     }
+    
     glEnd();
 }
 
@@ -50,6 +53,7 @@ void drawCircle(float x, float y, float radius, float r, float g, float b) {
     const float M_PI = 3.14159265358979323846;
     glBegin(GL_TRIANGLE_FAN);
     glVertex2f(x, 900 - y); // Center of the circle
+    glColor3f(0.0f, 0.0f, 0.0f);
     for (int i = 0; i <= numSegments; i++) {
         float angle = i * 2.0f * M_PI / numSegments;
         float px = x + radius * cos(angle);
